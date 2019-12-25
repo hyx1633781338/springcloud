@@ -1,0 +1,72 @@
+
+# 端口号
+server:
+  port: 7201
+# 服务名称
+spring:
+  profiles: provider-1
+  application:
+    name: eureka-provider
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/wechar?characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+    # 使用 druid 作为连接池  更多配置的说明可以参见 druid starter 中文文档 https://github.com/alibaba/druid/tree/master/druid-spring-boot-starter
+    type: com.alibaba.druid.pool.DruidDataSource
+
+# 服务注册与发现相关配置
+eureka:
+  client:
+    # 注册中心地址
+    serviceUrl:
+      defaultZone: http://peer1:7101/eureka/,http://peer2:7102/eureka/,http://peer3:7103/eureka/
+mybatis:
+ mapper-locations: classpath*:mapper/*.xml
+ type-aliases-package: com.zking.eurekaprovider.model
+#分页pageHelper
+pagehelper:
+  #配置使用哪种数据库语言，不配置的话pageHelper也会自动检测
+  helper-dialect: mysql
+  #配置分页参数合理化功能，默认是false
+  reasonable: true
+  support-methods-arguments: true
+  #当设置为true的时候，如果pagesize设置为0（或RowBounds的limit=0），
+  #就不执行分页，返回全部结果
+  page-size-zero: true
+---
+# 端口号
+server:
+  port: 7202
+# 服务名称
+spring:
+  profiles: provider-2
+  application:
+    name: eureka-provider
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/wechar?characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+    # 使用 druid 作为连接池  更多配置的说明可以参见 druid starter 中文文档 https://github.com/alibaba/druid/tree/master/druid-spring-boot-starter
+    type: com.alibaba.druid.pool.DruidDataSource
+
+# 服务注册与发现相关配置
+eureka:
+  client:
+    # 注册中心地址
+    serviceUrl:
+      defaultZone: http://peer1:7101/eureka/,http://peer2:7102/eureka/,http://peer3:7103/eureka/
+mybatis:
+ mapper-locations: classpath*:mapper/*.xml
+ type-aliases-package: com.zking.eurekaprovider.model
+#分页pageHelper
+pagehelper:
+  #配置使用哪种数据库语言，不配置的话pageHelper也会自动检测
+  helper-dialect: mysql
+  #配置分页参数合理化功能，默认是false
+  reasonable: true
+  support-methods-arguments: true
+  #当设置为true的时候，如果pagesize设置为0（或RowBounds的limit=0），
+  #就不执行分页，返回全部结果
+  page-size-zero: true
