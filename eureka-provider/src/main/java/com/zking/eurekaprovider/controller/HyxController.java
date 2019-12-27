@@ -27,7 +27,7 @@ public class HyxController {
     @RequestMapping(value="/selectid",produces = {"application/json;charset=UTF-8"})
     public JsonData test1() {
         jsonData.setCode(0);
-        jsonData.setResult(iHyxService.selectByPrimaryKey(1));
+        jsonData.setResult(iHyxService.selectByPrimaryKey(4));
         return jsonData;
     }
 }
