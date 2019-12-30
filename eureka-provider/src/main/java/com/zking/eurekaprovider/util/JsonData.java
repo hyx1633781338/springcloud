@@ -1,13 +1,13 @@
 package com.zking.eurekaprovider.util;
 
+import com.github.pagehelper.PageInfo;
+
 import java.io.Serializable;
 import java.util.HashMap;
+import java.util.List;
 
 /**
-
- *
- * @author slt
- *
+ * @author hyx
  */
 public class JsonData extends HashMap<String, Object> implements Serializable {
 	private static final long serialVersionUID = -8855960778711040221L;
@@ -47,5 +47,16 @@ public class JsonData extends HashMap<String, Object> implements Serializable {
 
 	public void setTotal(Integer total) {
 		this.put(TOTAL_KEY, total);
+	}
+
+	public void setTotal(Long total) {
+		this.put(TOTAL_KEY, total);
+	}
+
+	public void setPageInfo(List<?> list) {
+		PageInfo pageInfo = new PageInfo(list);
+		this.setPage(pageInfo.getPageNum());
+		this.setRows(pageInfo.getPageSize());
+		this.setTotal(pageInfo.getTotal());
 	}
 }
